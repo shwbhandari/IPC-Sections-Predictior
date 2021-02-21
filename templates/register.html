@@ -1,0 +1,237 @@
+
+    {% extends 'base2.html' %}
+
+    {% block body %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="container registerFirForm my-4">
+        <h2 class="text-center">
+            Register
+        </h2>
+    <br>
+        <form method="POST" id="registerFir">
+        {% csrf_token %}
+        <hr>
+        <h6>Complainant Information</h6>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="name"><span class="text-danger">*</span>First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your First name...">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                <label for="name"><span class="text-danger">*</span>Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your Last name...">
+            </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter yor Email...">
+            </div>
+            </div>
+            <div class="col">
+            <div class="form-group">
+                <label for="phone"><span class="text-danger">*</span>Mobile</label>
+                <input type="phone" class="form-control" id="mobileNo" name="mobileNo" placeholder="Enter yor Mobile no..." >
+            </div>
+            </div>
+        </div>
+        <hr>
+        <h6>Details of place of Occurance of Crime </h6><br>
+        
+            <!-- Incident details -->
+            
+            <div class="form-group">
+                <label>Location Details where Incident Occurs</label>
+                <div id="selection">
+                    <label class="control-label" for="state"><span class="text-danger">*</span>State:</label>
+                    <select class="form-control" id="listBox" name="state" onchange='selct_district(this.value)'></select><br>
+                    <label class="control-label" name="district" for="district"><span class="text-danger">*</span>Select District:</label>
+                    <select class="form-control"  id='secondlist'></select>
+                </div><br>
+                <label class="control-label" for="Police station"><span class="text-danger">*</span>Nearby Police Station:</label>
+            <select class="form-control" name="policeStation">
+                <option>Police Station</option>
+                <option value="Aerodrum">Aerodrum</option>
+                <option value="Annapurna">Annapurna</option>
+                <option value="Banganga">Banganga</option>
+                <option value="Betma">Betma</option>
+                <option value="Bhawarkuan">Bhawarkuan</option>
+                <option value="Central Kotwali">Central Kotwali</option>
+                <option value="Chandan Nagar">Chandan Nagar</option>
+                <option value="Chhatripura">Chhatripura</option>
+                <option value="Choti Gwaltol">Choti Gwaltoli</option>
+                <option value="Depalpur">Depalpur</option>
+                <option value="Hatod">Hatod</option>
+                <option value="Hira Nagar">Hira Nagar</option>
+                <option value="Juni Indore">Juni Indore</option>
+                <option value="Khajarana">Khajarana</option>
+                <option value="Khudel">Khudel</option>
+                <option value="Kishanganj">Kishanganj</option>
+                <option value="Lasudia">Lasudia</option>
+                <option value="Mahila Police Station">Mahila Police Station</option>
+                <option value="Mallharganj">Mallharganj</option>
+                <option value="Manpur">Manpur</option>
+                <option value="MG Road">MG Road</option>
+                <option value="MIG">MIG</option>
+                <option value="Palasia">Palasia</option>
+                <option value="Pandrinath">Pandrinath</option>
+                <option value="Pardeshipura">Pardeshipura</option>
+                <option value="Railway Police Station">Railway Police Station</option>
+                <option value="Rajendra Nagar">Rajendra Nagar</option>
+                <option value="Rawji Bazaar">Rawji Bazaar</option>
+                <option value="Sadar Bazaar">Sadar Bazaar</option>
+                <option value="Sanwer">Sanwer</option>
+                <option value="Sanyogitaganj">Sanyogitaganj</option>
+                <option value="Tukoganj">Tukoganj</option>
+                <option value="Vijay Nagar">Vijay Nagar</option>
+            </select>
+            <hr>
+            <h6>Details of Occurance of Crime </h6>
+            <label>Approximate Date and Time of Incident</label>
+            <div class="row">
+                
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name">Date From</label>
+                        <input type="date" class="form-control" id="dateFrom" name="dateFrom" >
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                    <label for="date">Date To</label>
+                    <input type="date" class="form-control" id="dateTo" name="dateTo">
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name">Time From</label>
+                        <input type="time" class="form-control" id="timeFrom" name="timeFrom" placeholder="Enter your First name...">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                    <label for="time">Time To</label>
+                    <input type="time" class="form-control" id="timeTO" name="timeTO" placeholder="Enter your Last name...">
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="name"><span class="text-danger">*</span>Incident Address</label>
+                <input type="text" class="form-control" id="ncidentAddress" name="incidentAddress" placeholder="Enter">
+            </div><br>
+            <select class="form-control">
+                <option>Select crime type</option>
+                <option value="Murder">Murder</option>
+                <option value="Women">Crime against women</option>
+                <option value="Theft">Theft</option>
+                <option value="Kidnapping">Kidnapping</option>
+            </select>
+             
+            <div class="form-group">
+                <label>Select  crime type</label>
+                <div id="selection2">
+                    <label class="control-label" for="state"><span class="text-danger">*</span>Select Crime Type</label>
+                    <select class="form-control" id="listBox2" name="category" onchange='selct_subcategory(this.value)'></select><br>
+                    <label class="control-label" name="subcategory" for="subcategory"><span class="text-danger">*</span>Select Subcategory:</label>
+                    <select class="form-control"  id='secondlist2'></select>
+                </div><br>
+            <br>
+            <!-- <form method="POST"> -->
+                <!-- {% csrf_token %} -->
+            <div class="form-group">
+                <label for="desc">Please Provide any additional Details Information about incident(Max:3000 character)</label>
+                <input type="hidden" name="record">
+                <div class="textarea-container">
+                <textarea id="textarea" name="desc" placeholder="Type details of incident" col="30" rows="3">{{data}}</textarea>
+                <button type="submit" id="speech" value="speak now" name="speech"><i class="fa fa-microphone" style="font-size:23px;color:red;
+                    position:absolute;
+                    z-index:9999;
+                    right: 15px;
+                    bottom: 6px;"></i></button>
+                </div>
+            </div>
+            <hr>
+            <h6>Details of victim</h6><br>
+            <div class="form-group">
+                <label for="name"><span class="text-danger">*</span>Victim Name </label>
+                <input type="text" class="form-control" id="victimName" name="victimName" placeholder="Enter">
+            </div>
+            <div class="form-group">
+                <label for="name"><span class="text-danger">*</span>Name of Father/Husband</label>
+                <input type="text" class="form-control" id="fatherName" name="fatherName" placeholder="Enter">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="gender"><span class="text-danger">*</span>Gender:</label>
+                  <div class="form-check  form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="Male" value="Male" checked>
+                  <label class="form-check-label" for="Male">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="Female" value="Female">
+                  <label class="form-check-label" for="Female">Female</label>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="gender"><span class="text-danger">*</span>Marrital Status:</label>
+                  <div class="form-check  form-check-inline">
+                  <input class="form-check-input" type="radio" name="married"  value="Yes" checked>
+                  <label class="form-check-label" for="Male">Married</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="married"  value="Female">
+                  <label class="form-check-label" for="Female">Not Married</label>
+                  </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                <label for="name">Age</label>
+                <input type="number" id="quantity" name="victimAge" min="1" max="100">
+                </div>
+            </div>
+            </div>
+           
+            <hr>
+            <h6>Details of known/ suspect/ unknown / accussed with full particular </h6><br>
+            <div class="form-group">
+                <label class="control-label" for="gender"><span class="text-danger">*</span>Suspect Seen :</label>
+                  <div class="form-check  form-check-inline">
+                  <input class="form-check-input" type="radio" name="suspectSeen"  value="Seen" checked>
+                  <label class="form-check-label" for="Male">Seen</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="suspectSeen"  value="Not Seen">
+                  <label class="form-check-label" for="Female">Not Seen</label>
+                  </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                    <label for="name">No of Suspect</label>
+                    <input type="number" id="suspectNo" name="suspectNo" min="1" max="15">
+                    </div>
+                </div>
+            </div>
+            <!-- </form> -->
+            <div class="form-group text-center">
+                <input type="submit" value="Save" id="recordFir" name="recordFir" class="btn btn-success">
+            </div> 
+        </form>
+    </div>
+</div>
+    {% endblock body %}
+    <script>
+        $(document).ready(function(){
+    $("form").submit(function(){
+    alert("Submitted");
+    });
+        });      
+    </script>
+    <!-- <script language="Javascript" src="jquery.js"></script> -->
